@@ -1,0 +1,9 @@
+<html>
+  <body>
+    <script>
+      console.log("location.origin",location.origin);
+          console.log("location.href",location.href);
+      parent.postMessage(location.href, location.origin);
+    </script>
+  </body>
+</html>

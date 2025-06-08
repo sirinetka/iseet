@@ -1,0 +1,27 @@
+
+<div class="card mt-2 p-5">
+
+<form [formGroup]="form" (ngSubmit)="convert()">
+  <input type="number" formControlName="montant" placeholder="Montant" required class="formControlName" />
+<div>
+    <label>convertire De</label>
+  <select formControlName="deviseSource" required>
+    <option *ngFor="let d of devises" [value]="d.code">{{ d.nom }} ({{ d.code }})</option>
+  </select>
+</div>
+<div>
+   <label>convertire A</label>
+  <select formControlName="deviseCible" required>
+    <option *ngFor="let d of devises" [value]="d.code">{{ d.nom }} ({{ d.code }})</option>
+  </select>
+</div>
+  <button type="submit" class="btn btn-info">Convertir</button>
+</form>
+
+<div *ngIf="result">
+  <p>Montant original: {{ result.montantOriginal }}</p>
+  <p>Montant converti: {{ result.montantConverti }}</p>
+  <p>Taux appliqué: {{ result.taux }}</p>
+  <p>Date: {{ result.date }}</p>
+</div>
+</div>

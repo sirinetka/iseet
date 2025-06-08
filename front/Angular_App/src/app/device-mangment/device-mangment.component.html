@@ -1,0 +1,22 @@
+<h2>Liste des devises</h2>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Nom</th>
+    <th>Taux</th>
+    <th>Dernière mise à jour</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let d of devises">
+    <td>{{ d.code }}</td>
+    <td>{{ d.nom }}</td>
+    <td>
+      <input [formControl]="getTauxControl(d.code)"  type="number" step="0.01" />
+    </td>
+    <td>{{ d.dateMaj | date: 'short' }}</td>
+    <td>
+      <button (click)="updateTaux(d.code)">Mettre à jour</button>
+    </td>
+  </tr>
+</table>

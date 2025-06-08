@@ -1,0 +1,189 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-title text-center rounded-bottom-5" style="background-color: #00008f;">
+      <h3 class="p-lg-1 fw-bolder fs-4 text-light">Facture Service</h3>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="thead-dark">
+          <tr>
+            <th>ID Facture</th>
+            <th>code</th>
+            <th>adresse</th>
+            <th>tel</th>
+            <th>email</th>
+            <th>matfisc</th>
+            <th>prix</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of ventes">
+            <td>{{ c.id}}</td>
+            <td>{{ c.code }}</td>
+            <td>{{ c.adresse }}</td>
+            <td>{{ c.tel }}</td>
+            <td>{{ c.email}}</td>
+            <td>{{ c.matfisc}}</td>
+            <td>{{ c.prix}}</td>
+            <td>{{ c.status}}</td>
+            <td>
+              
+              <div *ngIf="!c.status || c.status !== 'payed'" class="btn-group" role="group" aria-label="Actions" >
+                <button type="button" class="btn btn-danger ps-3 pe-3" (click)="confirmerSupp(c)">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+               
+                <button type="button" class="btn btn-warning ms-4 shadow ps-3 pe-3" (click)="prendre(c)" data-bs-toggle="modal" data-bs-target="#updateModal">
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center mt-3">
+        <button class="btn btn-success shadow-sm pe-3 ps-3" data-bs-toggle="modal" data-bs-target="#myModal">
+          <i class="bi bi-plus-square"></i> Ajouter une facture
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Update Modal -->
+<div class="modal" id="updateModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-header text-center" style="background-color: #3f51b5;">
+            <h3 class="fw-bold fs-4 text-light m-0">Modifier la Facture</h3>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="UpdateVente(add)" #add="ngForm">
+             <div class="mb-3">
+                <label class="form-label">Code :</label>
+                <div class="col">
+                    <input class="form-control" [(ngModel)]="test.code" name="code">
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">adresse :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.adresse" name="adresse">
+                  </div>
+              </div>
+                   <div class="mb-3">
+                <label class="form-label">tel :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.tel" name="tel">
+                  </div>
+              </div>
+
+                     <div class="mb-3">
+                <label class="form-label">matfisc :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.matfisc" name="matfisc">
+                  </div>
+              </div>
+        <div class="mb-3">
+                <label class="form-label">email :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.email" name="email">
+                  </div>
+              </div>
+              
+         <div class="mb-3">
+                <label class="form-label">prix :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.prix" name="prix">
+                  </div>
+              </div>
+              
+             
+        
+              <div class="d-grid">
+                <button class="btn btn-outline-success mx-auto" type="submit">Mettre à jour</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Add Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-header text-center" style="background-color: #3f51b5;">
+            <h3 class="fw-bold fs-4 text-light m-0">Ajouter une Facture</h3>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="postVente(add)" #add="ngForm">
+              <div class="mb-3">
+                <label class="form-label">Code :</label>
+                <div class="col">
+                    <input class="form-control" [(ngModel)]="test.code" name="code">
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">adresse :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.adresse" name="adresse">
+                  </div>
+              </div>
+                   <div class="mb-3">
+                <label class="form-label">tel :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.tel" name="tel">
+                  </div>
+              </div>
+
+                     <div class="mb-3">
+                <label class="form-label">matfisc :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.matfisc" name="matfisc">
+                  </div>
+              </div>
+        <div class="mb-3">
+                <label class="form-label">email :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.email" name="email">
+                  </div>
+              </div>
+              
+         <div class="mb-3">
+                <label class="form-label">prix :</label>
+               <div class="col">
+                    <input class="form-control" [(ngModel)]="test.prix" name="prix">
+                  </div>
+              </div>
+              
+              <div class="d-grid">
+                <button class="btn btn-success" type="submit">Ajouter</button>
+              </div>
+            </form>
+            <hr>
+            <div class="d-grid">
+              <button class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

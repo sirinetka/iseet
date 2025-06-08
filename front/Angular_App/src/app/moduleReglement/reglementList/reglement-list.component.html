@@ -1,0 +1,30 @@
+
+<div class="p-3 container mt-5">
+  <div class="card">
+    <div class="card-title text-center rounded-bottom-5" style="background-color: #00008f;">
+      <h3 class="p-lg-1 fw-bolder fs-4 text-light">Reglement List</h3>
+    </div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Montant</th>
+      <th>Date</th>
+      <th>Mode</th>
+      <th>Facture</th>
+      <th>Référence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reg of reglements">
+      <td>{{ reg.id }}</td>
+      <td>{{ reg.montant }}</td>
+      <td>{{ reg.dateReglement }}</td>
+      <td>{{ reg.mode }}</td>
+      <td>{{ reg.factureId }}</td>
+      <td>{{ reg.referenceTransaction }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>

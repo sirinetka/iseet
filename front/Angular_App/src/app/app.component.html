@@ -1,0 +1,115 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3f51b5; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="bi bi-bootstrap"></i> Navbars
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div *ngIf="isLogin && profile=='admin'" class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="devisesmanage">
+            <i class="bi bi-house-fill"></i> Devis
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/clients">
+            <i class="bi bi-person-lines-fill"></i> Clients
+          </a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="/category">
+            <i class="bi bi-basket-fill"></i> Category Produits
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/produits">
+            <i class="bi bi-basket-fill"></i> Produits
+          </a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link" href="/facture">
+            <i class="bi bi-basket-fill"></i> facture
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ventes">
+            <i class="bi bi-cash-stack"></i> Ventes
+          </a>
+        </li>
+   <li class="nav-item">
+          <a class="nav-link" href="/reglementliste">
+            <i class="bi bi-cash-stack"></i> Liste reglement
+          </a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span *ngIf="profile; else not_logged_in">
+              {{profile}}
+            </span>
+            <ng-template #not_logged_in>
+              Not Logged
+            </ng-template>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li *ngIf="!isLogin"><a class="dropdown-item" (click)="login()">Login</a></li>
+            <li *ngIf="isLogin"><a class="dropdown-item" (click)="logout()">Logout</a></li>
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    
+    <div *ngIf="isLogin && profile !=='admin'" class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home">
+            <i class="bi bi-house-fill"></i> Home
+          </a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="/devis">
+            <i class="bi bi-cash-stack"></i> Devis
+          </a>
+        </li>
+         
+        <li class="nav-item">
+          <a class="nav-link" href="/produits">
+            <i class="bi bi-basket-fill"></i> Produits
+          </a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/reglement">
+            <i class="bi bi-cash-stack"></i>  ajouter reglement
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ventes">
+            <i class="bi bi-cash-stack"></i> Ventes
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span *ngIf="profile; else not_logged_in">
+              {{profile}}
+            </span>
+            <ng-template #not_logged_in>
+              Not Logged
+            </ng-template>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li *ngIf="!isLogin"><a class="dropdown-item" (click)="login()">Login</a></li>
+            <li *ngIf="isLogin"><a class="dropdown-item" (click)="logout()">Logout</a></li>
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+
